@@ -54,10 +54,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Cursor cursor = getContentResolver().query(URI_MY_MENU, projection, selection, null, null);
                 if (cursor != null && cursor.moveToFirst()) {
                     do {
-//                        int price = cursor.getColumnIndexOrThrow(cursor.getColumnName(1));
+                       // int price = cursor.getColumnIndexOrThrow(cursor.getColumnName(1))
                         int price=cursor.getInt(1);
                         String content = cursor.getString(0);
-//                        int remain = cursor.getColumnIndexOrThrow(cursor.getColumnName(2));
+                       //int remain = cursor.getColumnIndexOrThrow(cursor.getColumnName(2))
                         int remain = cursor.getInt(2);
                         Log.v("lilealyh", " content==" + content + " price===" + price + " remain==" + remain);
                     } while (cursor.moveToNext());

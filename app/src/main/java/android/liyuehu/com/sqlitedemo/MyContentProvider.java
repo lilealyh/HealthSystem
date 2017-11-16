@@ -54,8 +54,9 @@ public class MyContentProvider extends ContentProvider {
     public Uri insert(@NonNull Uri uri, @Nullable ContentValues values) {
         long id=0;
         SQLiteDatabase db=mySQLiteOpenHelper.getWritableDatabase();
+        //这里如果insert的内容在数据库中存在时，会报UNIQUE constraint failed错误
+        //把id=db.insert("Menu",null,values)换成replace
         id=db.replace("Menu",null,values);
-//        id=db.insert("Menu",null,values);
         db.close();
         return ContentUris.withAppendedId(uri,id);
     }
