@@ -1,8 +1,0 @@
-.gradle/
-.idea/
-app.iml
-build/
-build.gradle
-gradlew*
-local.properties
-proguard-rules.pro
