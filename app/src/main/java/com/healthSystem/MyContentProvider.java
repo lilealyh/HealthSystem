@@ -16,7 +16,7 @@ import android.util.Log;
  */
 
 public class MyContentProvider extends ContentProvider {
-    public static final String AUTHORITY = "android.liyuehu.com.healthsystem";
+    public static final String AUTHORITY = "com.lilea.healthSystem";
     public static final String TABLE = "menu";
     public static final String TABLE_HEALTH = "health";
     private MySQLiteOpenHelper mySQLiteOpenHelper;

@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <provider
-            android:authorities="android.liyuehu.com.healthSystem"
+            android:authorities="com.lilea.healthSystem"
             android:exported="true"
             android:name="com.healthSystem.MyContentProvider">
         </provider>

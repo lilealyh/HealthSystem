@@ -2,7 +2,6 @@ app/.gradle/
 app/.idea/
 app/app.iml
 app/build/
-app/build/*
 gradlew.bat
 local.properties
 gradle/
