@@ -69,7 +69,6 @@ public class TimerService extends Service {
         SqliteHelp.needClear = false;
         Log.i(TAG, "clearSharedPreference");
         stopSelf();
-//        Process.killProcess(Process.myPid());
     }
 
     void updateData() {

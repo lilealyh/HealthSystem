@@ -4,4 +4,16 @@
     <string name="text_insert">Insert</string>
     <string name="text_update">Update</string>
     <string name="text_delete">Delete</string>
+    <string name="text_add">+</string>
+    <string name="text_zero_time">0次</string>
+    <string name="text_dage">打嗝:</string>
+    <string name="text_dapi">打屁:</string>
+    <string name="text_date">日期:</string>
+    <string name="text_breakfast">早点:</string>
+    <string name="text_lunch">午饭:</string>
+    <string name="text_dinner">晚饭:</string>
+    <string name="text_breakfast_hint">面包</string>
+    <string name="text_lunch_hint">米饭</string>
+    <string name="text_dinner_hint">面条</string>
+
 </resources>

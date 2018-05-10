@@ -33,8 +33,11 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
                 + "breakfast" + " TEXT NOT NULL,"
                 + "lunch" + " TEXT NOT NULL,"
                 + "dinner" + " TEXT,"
-                + "dage" + " integer DEFAULT 0,"
-                + "dapi" + " integer DEFAULT 0"
+                + "dapi" + " integer DEFAULT 0,"
+                + "morningDage" + " integer DEFAULT 0,"
+                + "afternoonDage" + " integer DEFAULT 0,"
+                + "eveningDage" + " integer DEFAULT 0,"
+                + "dageTotal" + " integer DEFAULT 0"
                 + ");"
         );
     }

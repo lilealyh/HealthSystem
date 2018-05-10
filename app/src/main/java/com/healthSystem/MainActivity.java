@@ -24,13 +24,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button[] button=new Button[4];
     private static final int[] id = {R.id.query, R.id.insert, R.id.update, R.id.delete};
     private SqliteHelp mSqliteHelp;
-    private EditText mDageTimesEditText;
     private EditText mDapiTimesEditText;
     private EditText mBreakFastEditText;
     private EditText mLunchEditText;
     private EditText mDinnerTimesEditText;
+    private EditText mMorningDageEditText;
+    private EditText mAfternoonDageEditText;
+    private EditText mEveningDageEditText;
     private TextView mDateTextView;
     private static int dageTimes = 0;
+    private static int morningDageTimes = 0;
+    private static int afternoonDageTimes = 0;
+    private static int eveningDageTimes = 0;
     private static int dapiTimes = 0;
     private SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd-HH:mm:ss");
     private SharedPreferences mSharedPreference;
@@ -57,22 +62,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         for (int i = 0; i < id.length; i++) {
             button[i] = (Button) findViewById(id[i]);
         }
-        Button mDageAddButton = (Button) findViewById(R.id.dage_add_times);
+        mSqliteHelp=new SqliteHelp(this);
         Button mDapiAddButton = (Button) findViewById(R.id.dapi_add_times);
-        mDageTimesEditText = (EditText) findViewById(R.id.dage_content);
+        Button mMorningDageAddButton = (Button) findViewById(R.id.dage_content_morning_add_times);
+        Button mAfternoonDageAddButton = (Button) findViewById(R.id.dage_content_afternoon_add_times);
+        Button mEveningAddButton = (Button) findViewById(R.id.dage_content_evening_add_times);
         mDapiTimesEditText = (EditText) findViewById(R.id.dapi_content);
         mBreakFastEditText = (EditText) findViewById(R.id.breakfast_content);
         mLunchEditText = (EditText) findViewById(R.id.lunch_content);
         mDinnerTimesEditText = (EditText) findViewById(R.id.dinner_content);
         mDateTextView = (TextView) findViewById(R.id.date_content);
-        mDageAddButton.setOnClickListener(this);
+        mMorningDageEditText=(EditText) findViewById(R.id.dage_content_morning);
+        mAfternoonDageEditText=(EditText) findViewById(R.id.dage_content_afternoon);
+        mEveningDageEditText=(EditText) findViewById(R.id.dage_content_evening);
         mDapiAddButton.setOnClickListener(this);
+        mMorningDageAddButton.setOnClickListener(this);
+        mAfternoonDageAddButton.setOnClickListener(this);
+        mEveningAddButton.setOnClickListener(this);
         mBreakFastEditText.addTextChangedListener(new ClassOfTextWatcher(mBreakFastEditText, this));
         mLunchEditText.addTextChangedListener(new ClassOfTextWatcher(mLunchEditText, this));
         mDinnerTimesEditText.addTextChangedListener(new ClassOfTextWatcher(mDinnerTimesEditText, this));
-        mDageTimesEditText.addTextChangedListener(new ClassOfTextWatcher(mDageTimesEditText, this));
         mDapiTimesEditText.addTextChangedListener(new ClassOfTextWatcher(mDapiTimesEditText, this));
-        mSqliteHelp=new SqliteHelp(this);
+
+        mMorningDageEditText.addTextChangedListener(new ClassOfTextWatcher(mMorningDageEditText, this));
+        mAfternoonDageEditText.addTextChangedListener(new ClassOfTextWatcher(mAfternoonDageEditText, this));
+        mEveningDageEditText.addTextChangedListener(new ClassOfTextWatcher(mEveningDageEditText, this));
+
+
     }
 
     void initValue() {
@@ -93,8 +109,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Log.i(TAG, "mDinnerTimesEditText: "+mSharedPreference.getString("dinner", null));
         dageTimes = mSharedPreference.getInt("dage", 0);
         dapiTimes = mSharedPreference.getInt("dapi", 0);
-        mDageTimesEditText.setText(String.valueOf(dageTimes));
+        morningDageTimes = mSharedPreference.getInt("dage_morning", 0);
+        afternoonDageTimes = mSharedPreference.getInt("dage_afternoon", 0);
+        eveningDageTimes = mSharedPreference.getInt("dage_evening", 0);
         mDapiTimesEditText.setText(String.valueOf(dapiTimes));
+        mMorningDageEditText.setText(String.valueOf(morningDageTimes));
+        mAfternoonDageEditText.setText(String.valueOf(afternoonDageTimes));
+        mEveningDageEditText.setText(String.valueOf(eveningDageTimes));
     }
 
     @Override
@@ -113,15 +134,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.update:
                 mSqliteHelp.update();
                 break;
-            case R.id.dage_add_times:
-                dageTimes++;
-                mDageTimesEditText.setText(String.valueOf(dageTimes));
-                mSharedPreference.edit().putInt("dage", dageTimes).apply();
-                break;
             case R.id.dapi_add_times:
                 dapiTimes++;
                 mDapiTimesEditText.setText(String.valueOf(dapiTimes));
                 mSharedPreference.edit().putInt("dapi", dapiTimes).apply();
+                break;
+            case R.id.dage_content_morning_add_times:
+                morningDageTimes++;
+                mMorningDageEditText.setText(String.valueOf(morningDageTimes));
+                mSharedPreference.edit().putInt("dage_morning", morningDageTimes).apply();
+                break;
+            case R.id.dage_content_afternoon_add_times:
+                afternoonDageTimes++;
+                mAfternoonDageEditText.setText(String.valueOf(afternoonDageTimes));
+                mSharedPreference.edit().putInt("dage_afternoon", afternoonDageTimes).apply();
+                break;
+            case R.id.dage_content_evening_add_times:
+                eveningDageTimes++;
+                mEveningDageEditText.setText(String.valueOf(eveningDageTimes));
+                mSharedPreference.edit().putInt("dage_evening", eveningDageTimes).apply();
                 break;
             default:
                 break;
@@ -132,7 +163,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onDestroy() {
         mDapiTimesEditText.setText(null);
-        mDageTimesEditText.setText(null);
         super.onDestroy();
     }
 }

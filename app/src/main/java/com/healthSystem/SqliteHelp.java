@@ -92,15 +92,20 @@ public class SqliteHelp {
         String lunch=mSharedPreference.getString("lunch","");
         String dinner=mSharedPreference.getString("dinner","");
         String date=mSharedPreference.getString("date","");
-        int dage=mSharedPreference.getInt("dage",0);
         int dapi=mSharedPreference.getInt("dapi",0);
+        int morningDage=mSharedPreference.getInt("dage_morning", 0);
+        int afternoonDage=mSharedPreference.getInt("dage_afternoon", 0);
+        int eveningDage=mSharedPreference.getInt("dage_evening", 0);
         synchronized (this) {
             ContentValues values = new ContentValues();
             values.put("breakfast",breakfast);
             values.put("lunch", lunch);
             values.put("dinner",dinner);
-            values.put("dage", dage);
             values.put("dapi", dapi);
+            values.put("morningDage", morningDage);
+            values.put("afternoonDage",afternoonDage );
+            values.put("eveningDage", eveningDage);
+            values.put("dageTotal", morningDage+afternoonDage+eveningDage);
             values.put("date", date);
             if(breakfast.equals("")||lunch.equals("")||dinner.equals("")){
                 return false;
