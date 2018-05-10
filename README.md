@@ -1,2 +1,2 @@
-# SqliteDemo
-通过log查看增删改查。
+# HealthSystem
+可以简单记录自己的生活习惯，以便后续分析处理。
