@@ -2,10 +2,12 @@ package android.liyuehu.com.sqlitedemo;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.util.Log;
 
+import static android.liyuehu.com.sqlitedemo.MyContentProvider.URI_MY_HEALTH;
 import static android.liyuehu.com.sqlitedemo.MyContentProvider.URI_MY_MENU;
 
 /**
@@ -14,8 +16,20 @@ import static android.liyuehu.com.sqlitedemo.MyContentProvider.URI_MY_MENU;
 
 public class SqliteHelp {
     private Context mContext;
+    private static SqliteHelp mSqliteHelp;
+    private SharedPreferences mSharedPreference;
+    public static boolean needClear=false;
+    public SqliteHelp() {
+    }
+
     public SqliteHelp(Context context){
         this.mContext=context;
+    }
+    public static SqliteHelp getSqliteHelp(){
+        if(mSqliteHelp==null){
+            mSqliteHelp=new SqliteHelp();
+        }
+        return mSqliteHelp;
     }
     private static String[] content = new String[]{"番茄炒蛋", "土豆丝", "酸菜鱼", "烤鱼", "清汤羊肉"};
     private static String[] updateContent = new String[]{"苹果", "香蕉", "草莓", "香草", "榴莲"};
@@ -36,7 +50,7 @@ public class SqliteHelp {
             } while (cursor.moveToNext());
         }
     }
-    void insert(){
+    public void insert(){
         int price = 30;
         int remain = 10;
         for (int i = 0; i < content.length; i++) {
@@ -51,7 +65,7 @@ public class SqliteHelp {
             }
         }
     }
-    void update(){
+    public void update(){
         int fruitPrice = 5;
         int fruitRemain = 10;
         for (int i = 0; i <updateContent.length ; i++) {
@@ -67,11 +81,36 @@ public class SqliteHelp {
             }
         }
     }
-    void delete(){
-        int deleteResult = mContext.getContentResolver().delete(URI_MY_MENU, "content" +" LIKE "+"'%鱼%'" , null);
+    public void delete(){
+        int deleteResult = mContext.getContentResolver().delete(URI_MY_HEALTH, "dage"+" <= "+"10" , null);
         if(deleteResult==0){
             deleteResult = mContext.getContentResolver().delete(URI_MY_MENU, "content" +" LIKE "+"'%香%'" , null);
         }
         Log.v("lilealyh", "deleteResult===" + deleteResult);
+    }
+
+
+    public boolean insertForHealth(SharedPreferences mSharedPreference,Context context){
+        String breakfast=mSharedPreference.getString("breakfast","");
+        String lunch=mSharedPreference.getString("lunch","");
+        String dinner=mSharedPreference.getString("dinner","");
+        String date=mSharedPreference.getString("date","");
+        int dage=mSharedPreference.getInt("dage",0);
+        int dapi=mSharedPreference.getInt("dapi",0);
+        synchronized (this) {
+            ContentValues values = new ContentValues();
+            values.put("breakfast",breakfast);
+            values.put("lunch", lunch);
+            values.put("dinner",dinner);
+            values.put("dage", dage);
+            values.put("dapi", dapi);
+            values.put("date", date);
+            if(breakfast.equals("")||lunch.equals("")||dinner.equals("")){
+                return false;
+            }
+            Uri insertResult = context.getContentResolver().insert(URI_MY_HEALTH, values);
+            Log.v("lilealyh", "insertResult===" + insertResult+" date==="+date);
+        }
+        return true;
     }
 }

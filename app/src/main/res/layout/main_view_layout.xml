@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_alignParentStart="true"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/date_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="日期:"
+            android:textSize="20sp" />
+
+        <TextView
+            android:textSize="20sp"
+            android:id="@+id/date_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/date_name"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/date_name"
+            />
+
+        <TextView
+            android:id="@+id/breakfast_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/date_name"
+            android:layout_marginTop="40dp"
+            android:gravity="center_vertical"
+            android:text="早点:"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/breakfast_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/breakfast_name"
+            android:layout_below="@id/date_content"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/breakfast_name"
+            android:hint="面包" />
+
+        <TextView
+            android:id="@+id/lunch_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/breakfast_name"
+            android:layout_marginTop="40dp"
+            android:gravity="center_vertical"
+            android:text="午饭:"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/lunch_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/lunch_name"
+            android:layout_below="@id/breakfast_content"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/lunch_name"
+            android:hint="米饭" />
+
+        <TextView
+            android:id="@+id/dinner_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lunch_name"
+            android:layout_marginTop="40dp"
+            android:gravity="center_vertical"
+            android:text="晚饭:"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/dinner_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/dinner_name"
+            android:layout_below="@id/lunch_content"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/dinner_name"
+            android:hint="粥" />
+
+        <TextView
+            android:id="@+id/dage_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dinner_name"
+            android:layout_marginTop="40dp"
+            android:gravity="center_vertical"
+            android:text="打嗝:"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/dage_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/dage_name"
+            android:layout_below="@id/lunch_content"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/dinner_name"
+            android:hint="0次" />
+
+        <Button
+            android:id="@+id/dage_add_times"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/dage_name"
+            android:layout_marginStart="20dp"
+            android:layout_toEndOf="@+id/dage_content"
+            android:text="add" />
+
+        <TextView
+            android:id="@+id/dapi_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dage_name"
+            android:layout_marginTop="40dp"
+            android:gravity="center_vertical"
+            android:text="打屁:"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/dapi_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/dapi_name"
+            android:layout_below="@id/dage_content"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/dinner_name"
+            android:hint="0次" />
+
+        <Button
+            android:id="@+id/dapi_add_times"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/dapi_name"
+            android:layout_marginStart="20dp"
+            android:layout_toEndOf="@+id/dapi_content"
+            android:text="add" />
+    </RelativeLayout>
+
+</LinearLayout>

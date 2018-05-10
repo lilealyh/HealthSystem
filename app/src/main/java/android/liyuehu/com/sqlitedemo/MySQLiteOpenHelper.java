@@ -27,11 +27,22 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
                 + "remain" + " integer DEFAULT 0"
                 + ");"
         );
+        db.execSQL("create table " + "HealthSystem"
+                + "("
+                + "date" + " TEXT PRIMARY KEY,"
+                + "breakfast" + " TEXT NOT NULL,"
+                + "lunch" + " TEXT NOT NULL,"
+                + "dinner" + " TEXT,"
+                + "dage" + " integer DEFAULT 0,"
+                + "dapi" + " integer DEFAULT 0"
+                + ");"
+        );
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS Menu");
+        db.execSQL("DROP TABLE IF EXISTS HealthSystem");
         onCreate(db);
     }
 }

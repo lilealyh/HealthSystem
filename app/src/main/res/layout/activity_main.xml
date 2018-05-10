@@ -1,38 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="android.liyuehu.com.sqlitedemo.MainActivity">
 
-    <Button
-        android:id="@+id/query"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="query"
-        />
+    <include
+        android:id="@+id/main_layout"
+        layout="@layout/main_view_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/sql_button" />
 
-    <Button
-        android:id="@+id/insert"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="insert"
-        />
-
-    <Button
-        android:id="@+id/update"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="update"
-        />
-
-    <Button
-        android:id="@+id/delete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="delete"
-        />
-</LinearLayout>
+    <include
+        android:visibility="visible"
+        android:id="@+id/sql_button"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="100dp"
+        layout="@layout/sql_button_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</RelativeLayout>
