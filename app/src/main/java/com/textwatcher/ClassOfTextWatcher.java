@@ -2,11 +2,12 @@ package com.textwatcher;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.liyuehu.com.sqlitedemo.R;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
+
+import com.lilea.healthSystem.R;
 
 public class ClassOfTextWatcher implements TextWatcher {
     private EditText editText;

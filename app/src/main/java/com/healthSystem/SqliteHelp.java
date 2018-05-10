@@ -1,4 +1,4 @@
-package android.liyuehu.com.sqlitedemo;
+package com.healthSystem;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,9 +6,6 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.util.Log;
-
-import static android.liyuehu.com.sqlitedemo.MyContentProvider.URI_MY_HEALTH;
-import static android.liyuehu.com.sqlitedemo.MyContentProvider.URI_MY_MENU;
 
 /**
  * Created by Yuehu.Li on 2017/11/16.
@@ -38,7 +35,7 @@ public class SqliteHelp {
         String[] projection = new String[]{"content", "price", "remain"};
         String[] selectionArg = new String[]{"红烧肉"};
         String selection = "content" + " not null";
-        Cursor cursor = mContext.getContentResolver().query(URI_MY_MENU, projection, selection, null, null);
+        Cursor cursor = mContext.getContentResolver().query(MyContentProvider.URI_MY_MENU, projection, selection, null, null);
         if (cursor != null && cursor.moveToFirst()) {
             do {
                 // int price = cursor.getColumnIndexOrThrow(cursor.getColumnName(1))
@@ -60,7 +57,7 @@ public class SqliteHelp {
                 values.put("content", content[i]);
                 values.put("price", ++price);
                 values.put("remain", remain--);
-                Uri insertResult = mContext.getContentResolver().insert(URI_MY_MENU, values);
+                Uri insertResult = mContext.getContentResolver().insert(MyContentProvider.URI_MY_MENU, values);
                 Log.v("lilealyh", "insertResult===" + insertResult);
             }
         }
@@ -76,15 +73,15 @@ public class SqliteHelp {
                 updateValues.put("remain", fruitRemain--);
                 String where="content" + "=?";
                 String[] arg=new String[]{content[i]};
-                int updateValue = mContext.getContentResolver().update(URI_MY_MENU, updateValues, where, arg);
+                int updateValue = mContext.getContentResolver().update(MyContentProvider.URI_MY_MENU, updateValues, where, arg);
                 Log.v("lilealyh", "updateValue===" + updateValue);
             }
         }
     }
     public void delete(){
-        int deleteResult = mContext.getContentResolver().delete(URI_MY_HEALTH, "dage"+" <= "+"10" , null);
+        int deleteResult = mContext.getContentResolver().delete(MyContentProvider.URI_MY_HEALTH, "dage"+" <= "+"10" , null);
         if(deleteResult==0){
-            deleteResult = mContext.getContentResolver().delete(URI_MY_MENU, "content" +" LIKE "+"'%香%'" , null);
+            deleteResult = mContext.getContentResolver().delete(MyContentProvider.URI_MY_MENU, "content" +" LIKE "+"'%香%'" , null);
         }
         Log.v("lilealyh", "deleteResult===" + deleteResult);
     }
@@ -108,7 +105,7 @@ public class SqliteHelp {
             if(breakfast.equals("")||lunch.equals("")||dinner.equals("")){
                 return false;
             }
-            Uri insertResult = context.getContentResolver().insert(URI_MY_HEALTH, values);
+            Uri insertResult = context.getContentResolver().insert(MyContentProvider.URI_MY_HEALTH, values);
             Log.v("lilealyh", "insertResult===" + insertResult+" date==="+date);
         }
         return true;

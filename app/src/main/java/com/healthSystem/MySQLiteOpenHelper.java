@@ -1,4 +1,4 @@
-package android.liyuehu.com.sqlitedemo;
+package com.healthSystem;
 
 import android.content.Context;
 import android.database.DatabaseErrorHandler;

@@ -1,29 +1,23 @@
-package android.liyuehu.com.sqlitedemo;
+package com.healthSystem;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.icu.text.SimpleDateFormat;
-import android.net.Uri;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.lilea.healthSystem.R;
 import com.textwatcher.ClassOfTextWatcher;
 import com.timer.service.TimerService;
 
 import java.util.Date;
-
-import static android.liyuehu.com.sqlitedemo.MyContentProvider.URI_MY_MENU;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String TAG = "MainActivity";

@@ -7,7 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.icu.text.SimpleDateFormat;
-import android.liyuehu.com.sqlitedemo.SqliteHelp;
+import com.healthSystem.SqliteHelp;
 import android.os.IBinder;
 import android.os.SystemClock;
 import android.support.annotation.Nullable;

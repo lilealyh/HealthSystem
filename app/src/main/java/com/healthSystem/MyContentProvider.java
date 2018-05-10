@@ -1,4 +1,4 @@
-package android.liyuehu.com.sqlitedemo;
+package com.healthSystem;
 
 import android.content.ContentProvider;
 import android.content.ContentUris;
@@ -16,7 +16,7 @@ import android.util.Log;
  */
 
 public class MyContentProvider extends ContentProvider {
-    public static final String AUTHORITY = "android.liyuehu.com.sqlitedemo";
+    public static final String AUTHORITY = "android.liyuehu.com.healthsystem";
     public static final String TABLE = "menu";
     public static final String TABLE_HEALTH = "health";
     private MySQLiteOpenHelper mySQLiteOpenHelper;
@@ -33,8 +33,8 @@ public class MyContentProvider extends ContentProvider {
     @Override
     public boolean onCreate() {
         mySQLiteOpenHelper = new MySQLiteOpenHelper(this.getContext(), "health.db", 1);
+        //这里必须返回true
         return true;
-//        return false;
     }
 
     @Nullable
